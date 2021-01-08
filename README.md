@@ -1,39 +1,34 @@
 # The Snake Game
-The Snake Game is a classic arcade-style game reimagined using Python's turtle graphics. In this project, you control a snake that moves across the screen, eating food to grow longer. Each time the snake consumes a piece of food, the score increases and a new food item appears at a random location. The game ends when the snake collides with a wall or with its own body. The project is organized into several modules to handle different aspects of the game: food appearance, snake behavior, score tracking, and the main game loop.
+The Snake Game is a modern take on the classic arcade game, implemented with Python’s turtle graphics. In this updated version, the game no longer ends on collision—instead, it automatically resets while tracking and persisting your high score across sessions. Eat food pellets to grow longer and rack up points; hit a wall or your own tail, and you’ll restart with your current score compared to the all-time high score stored in `high_score.txt`.
 
 ## Features
-- **Dynamic Food Generation:**
-The food appears as a small yellow circle placed at a random position within the game boundaries.
-When the snake eats the food (i.e., when the snake's head comes close enough to the food), it is refreshed to a new random location.
+- **Continuous Play with Reset:**
+Collisions with walls or the snake’s own body reset the game board instead of ending the program, keeping you in the action.
 
-- **Snake Mechanics:**
-The snake is made up of multiple segments that follow the head.
-It moves continuously on the screen, and you can control its direction using the arrow keys.
-Eating food causes the snake to extend by adding a new segment at its tail.
+- **Persistent High Score:**
+Tracks your session high score and writes it to high_score.txt, so your best performance is remembered across runs.
 
-- **Scoreboard Display:**
-The current score is tracked and displayed at the top of the screen.
-A "GAME OVER" message is displayed when the snake collides with the wall or itself.
+- **Dynamic Growth:**
+Each time the snake eats food, it grows by one segment, making navigation increasingly challenging.
 
-- **Collision Detection:**
-The game monitors for collisions with the boundaries of the screen.
-It also checks for collisions with the snake's own body, ending the game upon such an event.
+- **Score Tracking:**
+Displays both your current session score and the all-time high score at the top of the screen.
 
-- **Smooth Animation:**
-The screen updates at controlled intervals, creating smooth and responsive gameplay.
+- **Smooth Controls & Animation:**
+Use arrow keys for real-time snake direction changes; the game loop updates at a steady pace for fluid movement.
 
 ## Modules Overview
-- `food.py`:
-Defines the Food class which inherits from Turtle. It creates a food object that appears as a small yellow circle at a random position and can be refreshed when consumed by the snake.
+- `main.py`:
+  - Sets up the game screen, ties together Snake, Food, and Scoreboard, and contains the main loop with collision and reset logic.
 
 - `snake.py`:
-Contains the Snake class that manages the snake’s movement, growth, and directional controls. The snake is made up of several Turtle segments that follow each other to simulate slithering.
+  - Defines the Snake class, handling creation, movement, growth, and resetting of the snake segments.
+
+- `food.py`:
+  - Defines the Food class, which creates and refreshes food pellets at random locations.
 
 - `scoreboard.py`:
-Implements the Scoreboard class which extends Turtle to display the player’s current score at the top of the screen and shows a game over message once the game ends.
-
-- `main.py`:
-Serves as the entry point for the game. It sets up the game screen, instantiates objects for the snake, food, and scoreboard, and contains the main game loop. It also listens for keyboard events to control the snake’s movement.
+  - Defines the Scoreboard class, displaying current and high scores and managing high-score persistence.
 
 
 ## Installation
@@ -48,6 +43,9 @@ The turtle module is included with the standard Python distribution.
 - **Time Module and Random Module:**
 These are part of Python's standard library and are used for controlling game speed and generating random positions/movements respectively.
 
+- **A Writable `high_score.txt` File:**
+In the project directory, create an empty file named `high_score.txt` containing 0. The game will update this file automatically.
+
 ### How to Run
 
 1. **Download the Code:** Clone the repository or make sure you have all the following files in the same directory:
@@ -59,6 +57,8 @@ These are part of Python's standard library and are used for controlling game sp
 
    - scoreboard.py
 
+   - high_score.txt   ← containing a single `0`
+
 2. **Open Terminal/Command Prompt:** Navigate to the directory containing the file.
 
 3. **Run the program:** Execute the following command:
@@ -68,12 +68,12 @@ These are part of Python's standard library and are used for controlling game sp
     ```
 
 4. **Play the Game:**
-   - Use the arrow keys (Up, Down, Left, Right) to control the snake. 
-   - Try to eat the food to increase your score and grow the snake. 
-   - Avoid hitting the walls or colliding with your own body to keep playing. 
-   - When a collision occurs, the game will end, and a game over message with your final score will be displayed.
+   - Use the Up, Down, Left, and Right arrow keys to steer the snake. 
+   - Eat the yellow food pellets to grow and increase your score. 
+   - Colliding with a wall or your own body resets the board—try again to beat your high score!
  
-
+5. **Exit:**
+Click the game window or press Ctrl+C in the terminal.
 
 ## Demo
 ![The Snake Game Demo](screenshots/demo.gif)
